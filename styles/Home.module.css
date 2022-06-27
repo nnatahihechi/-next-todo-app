@@ -1,8 +1,21 @@
 .container {
   padding: 0 2rem;
+  background-color: #9d360a;
+  min-height: 100vh;
+  padding: 4rem 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  background: linear-gradient(
+    90deg,
+      rgb(146, 216, 239) 0%,
+      rgb(225, 77, 9) 100%
+    )
 }
 
-.main {
+/* .main {
   min-height: 100vh;
   padding: 4rem 0;
   flex: 1;
@@ -113,4 +126,4 @@
     width: 100%;
     flex-direction: column;
   }
-}
+} */
