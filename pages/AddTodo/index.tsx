@@ -37,7 +37,7 @@ const AddTodo = () => {
     // console.log(content, "content");
     axios.get("http://localhost:3000/api/TodoItem/")
       .then(response => {
-        console.log("res",response)
+        // console.log("ressddddd",response.data[0]._id)
         setTodos(response.data);
       })
   }, []);
@@ -46,19 +46,24 @@ const AddTodo = () => {
   const addTodo: FormEventHandler<HTMLFormElement> = async e => {
     e.preventDefault();
 
-    console.log(content);
-
-    const payload = {todoId: "", title: content.title, description: content.description, isComplete: false };
-
+    content.todoId = nanoid();
+    // console.log(content.todoId);
+    
+    const payload = {todoId: content.todoId, title: content.title, description: content.description, isComplete: false };
+    
     axios.post("http://localhost:3000/api/AddTodo", payload)
-      .then(response => console.log(response))
-      .catch(err => console.error(err));
+      .then(response => {
+        console.log("response ---", response);
+      })
+      .catch(err => {
+        console.error("error ---", err);
+      });
 
     setTodos((current) => {
-      let newObject = { ...content, id: nanoid() }
+      let newObject = { ...content, id: content.todoId }
 
-      let newCurrent = [...current, newObject]
-      return newCurrent
+      let newCurrent = [...current, newObject];
+      return newCurrent;
     });
   }
   

@@ -14,15 +14,15 @@ const TodoList = () => {
 
   return (
     <div className={styles.container}>
-<div className={styles.todos}>
-    {todos.map(todoProps =>(
-      <>
-        <TodoItem {...todoProps} key={todoProps.todoId}/>
-      </>
-      
-    ))}
-    
-</div>
+      <div className={styles.todos}>
+          {todos.map(todoProps =>(
+            <>
+              <TodoItem {...todoProps} key={todoProps.todoId}/>
+            </>
+            
+          ))}
+          
+      </div>
     </div>
   )
 }

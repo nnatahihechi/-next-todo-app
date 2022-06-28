@@ -15,7 +15,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   
   if (method === "POST") {
     const todo = new Todo(req.body);
-
+    
     try {
       const todos = await todo.save();
       res.status(201).json(todos);

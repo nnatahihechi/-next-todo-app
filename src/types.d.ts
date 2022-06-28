@@ -3,7 +3,6 @@ export interface TodoContent{
     title: string;
     description: string;
     isComplete:Boolean
-    
 }
 
 

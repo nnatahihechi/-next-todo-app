@@ -20,9 +20,26 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     await Todo.deleteOne({ todoId: id });
   }
 
+  // if (method === 'PUT') {
+  //   await Todo.updateOne({ todoId: id }, { $set: { isComplete: req.body.isComplete } });
+  // }
+
+
   if (method === 'PUT') {
-    await Todo.updateOne({ todoId: id }, { $set: { isComplete: req.body.isComplete }});
+    const payload = {
+      title: req.body.title,
+      description: req.body.description,
+      todoId: req.body.todoId,
+      isComplete: req.body.isComplete
+    }
+    
+    console.log("playload...", payload);
+    await Todo.updateOne({ todoId: id }, { $set: { ...payload } })
+      .then(response => res.status(200).json(response))
+      .catch(err => console.error("err", err));
   }
+
+
 
   //   if (method === "PUT") {
   //     try {
