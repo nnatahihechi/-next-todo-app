@@ -12,7 +12,7 @@ const TodoList = () => {
     
   const todos = useRecoilValue(todoContentState);
   if (!todos.length){
-    return <SpinnerCircular color="#fff" size={50} />
+    return <SpinnerCircular className={styles.spinner}   />
   }
 
   return (

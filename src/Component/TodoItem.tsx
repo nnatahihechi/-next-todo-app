@@ -24,7 +24,6 @@ const TodoItem = (props: TodoContent) => {
     // useRecoilState(todoCompleteState(props.todoId));
   const setTodos = useSetRecoilState(todoContentState);
 
-  console.log(setTodos);
   
 
 
@@ -81,20 +80,25 @@ const TodoItem = (props: TodoContent) => {
         style={{padding: "3rem 0"}}
         className={styles.form}
         onSubmit={editTodo}>
-
+ 
         <input
+      
           value={titleValue}
           onChange={(e) => { setTitleValue(e.target.value) }}
           placeholder="todo"
           id="title" required
           className={style.input} />
+         
 
+         
         <input
           value={descriptionValue}
+          // type="textarea"
           onChange={(e) => { setDescriptionValue(e.target.value) }}
           placeholder="Description"
           id="description"
           className={style.input} />
+        
 
         <button type="submit"
           className={style.button}>
@@ -134,7 +138,7 @@ const TodoItem = (props: TodoContent) => {
           setEdit(true);
         }}
       >
-        Edit
+        Edit ✏️
       </button>
       <button
         className={styles.button}
@@ -146,7 +150,7 @@ const TodoItem = (props: TodoContent) => {
       <button
         className={styles.button}
         onClick={removeTodo}
-      >Remove␥</button>
+      >Remove ❌</button>
     </div>
   );
 

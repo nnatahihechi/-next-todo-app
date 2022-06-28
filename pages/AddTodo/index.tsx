@@ -47,7 +47,6 @@ const AddTodo = () => {
     e.preventDefault();
 
     content.todoId = nanoid();
-    // console.log(content.todoId);
     
     const payload = {todoId: content.todoId, title: content.title, description: content.description, isComplete: false };
     
@@ -86,7 +85,9 @@ const AddTodo = () => {
           // defaultValue="Reset"
           className={styles.input} />
 
-        <input onChange={handleChange}
+        <input 
+        onChange={handleChange}
+        type="textarea" 
           value={content.description}
           placeholder="Description"
           id="description"
