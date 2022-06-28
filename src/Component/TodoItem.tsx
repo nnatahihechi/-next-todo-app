@@ -47,7 +47,7 @@ const TodoItem = (props: TodoContent) => {
   }
 
   //handle edit todos
-  const set: FormEventHandler<HTMLFormElement> = async e => {
+  const editTodo: FormEventHandler<HTMLFormElement> = async e => {
     e.preventDefault();
 
    const payload = {
@@ -65,6 +65,10 @@ const TodoItem = (props: TodoContent) => {
           }
       })
    .catch(err => { console.error(err) })
+
+  //  setTitleValue("");
+  //   setDescriptionValue("");
+ 
   }
 
 
@@ -77,7 +81,7 @@ const TodoItem = (props: TodoContent) => {
         <form
         style={{padding: "3rem 0"}}
         className={styles.form}
-        onSubmit={set}>
+        onSubmit={editTodo}>
 
         <input
           value={titleValue}
@@ -102,7 +106,6 @@ const TodoItem = (props: TodoContent) => {
           className={style.button}
           onClick={() => { 
             setEdit(false);
-            console.log(edit);
             
           }}>
           Cancel

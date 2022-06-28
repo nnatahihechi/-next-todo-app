@@ -65,6 +65,8 @@ const AddTodo = () => {
       let newCurrent = [...current, newObject];
       return newCurrent;
     });
+
+    setContent({ todoId: "", description: "", title: "", isComplete: false });
   }
   
 
@@ -81,13 +83,16 @@ const AddTodo = () => {
           value={content.title}
           placeholder="todo"
           id="title" required
+          // defaultValue="Reset"
           className={styles.input} />
 
         <input onChange={handleChange}
           value={content.description}
           placeholder="Description"
           id="description"
-          className={styles.input} />
+          className={styles.input}
+          // defaultValue="Reset"
+           />
 
         <button type="submit"
           disabled={!content.title}
