@@ -12,9 +12,11 @@ import axios from 'axios';
 
 const TodoItem = (props: TodoContent) => {
   const { description, title, isComplete, todoId} = props;
-  const [edit, updateEdit] = useState(false);
-  const [titleValue, updateTitleValue] = useState(title);
-  const [descriptionValue, updateDescriptionValue] = useState(description);
+  const [newDescription, setnewDescription] = useState(description);
+  const [newTitle, setnewTitle] = useState(title);
+  const [edit, setEdit] = useState(false);
+  const [titleValue, setTitleValue] = useState(title);
+  const [descriptionValue, setDescriptionValue] = useState(description);
 
   //intitialize props 
   //intitialize iscomplet state
@@ -45,7 +47,7 @@ const TodoItem = (props: TodoContent) => {
   }
 
   //handle edit todos
-  const update: FormEventHandler<HTMLFormElement> = e => {
+  const set: FormEventHandler<HTMLFormElement> = async e => {
     e.preventDefault();
 
    const payload = {
@@ -54,12 +56,19 @@ const TodoItem = (props: TodoContent) => {
       todoId: todoId,
       isComplete: isCompleted
     }
-    console.log(payload);
 
-    axios.put(`http://localhost:3000/api/TodoItem/${todoId}`, payload)
-    .then(response => console.log(response))
-    .catch(err => console.error(err));
+    await axios.put(`http://localhost:3000/api/TodoItem/${todoId}`, payload)
+      .then(response => {
+        if (response.status === 200) {
+              setnewDescription(descriptionValue)
+              setnewTitle(titleValue)
+          }
+      })
+   .catch(err => { console.error(err) })
   }
+
+
+
 
   if (edit) {
 
@@ -68,31 +77,33 @@ const TodoItem = (props: TodoContent) => {
         <form
         style={{padding: "3rem 0"}}
         className={styles.form}
-        onSubmit={update}>
+        onSubmit={set}>
 
         <input
           value={titleValue}
-          onChange={(e) => { updateTitleValue(e.target.value) }}
+          onChange={(e) => { setTitleValue(e.target.value) }}
           placeholder="todo"
           id="title" required
           className={style.input} />
 
         <input
           value={descriptionValue}
-          onChange={(e) => { updateDescriptionValue(e.target.value) }}
+          onChange={(e) => { setDescriptionValue(e.target.value) }}
           placeholder="Description"
           id="description"
           className={style.input} />
 
         <button type="submit"
           className={style.button}>
-          Update Todo
+          Update
         </button>
 
         <button type="submit"
           className={style.button}
           onClick={() => { 
-            updateEdit(false)
+            setEdit(false);
+            console.log(edit);
+            
           }}>
           Cancel
         </button>
@@ -107,10 +118,10 @@ const TodoItem = (props: TodoContent) => {
       <div className={styles.item} onClick={() => {
         console.log(props.todoId);
       }}>
-        {isCompleted ? <h2 style={{textDecoration: 'line-through'}}>{title}</h2> : <h2>{title}</h2>}
+        {isCompleted ? <h2 style={{textDecoration: 'line-through'}}>{newTitle}</h2> : <h2>{newTitle}</h2>}
         {/* <h2>{title}</h2> */}
 
-        {isCompleted ? description && <p style={{textDecoration: 'line-through'}}>{description}</p> : description && <p>{description}</p>}
+        {isCompleted ? newDescription && <p style={{textDecoration: 'line-through'}}>{newDescription}</p> : newDescription && <p>{newDescription}</p>}
 
         {/* {description && <p>{description}</p>} */}
       </div>
@@ -118,7 +129,7 @@ const TodoItem = (props: TodoContent) => {
         data-todoid={props.todoId}
         className={styles.button}
         onClick={(e) => {
-          updateEdit(true);
+          setEdit(true);
         }}
       >
         Edit
@@ -138,6 +149,7 @@ const TodoItem = (props: TodoContent) => {
   );
 
 }
+
 
 export default TodoItem
 
