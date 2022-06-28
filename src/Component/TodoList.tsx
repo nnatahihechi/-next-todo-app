@@ -1,4 +1,5 @@
 import styles from "../../styles/TodoList.module.css";
+import { SpinnerCircular } from 'spinners-react';
 
 import {useRecoilValue} from 'recoil'
 import { todoContentState } from '../state/todoState'
@@ -10,10 +11,13 @@ const TodoList = () => {
   // const { todolist } = props
     
   const todos = useRecoilValue(todoContentState);
-  
+  if (!todos.length){
+    return <SpinnerCircular color="#fff" size={50} />
+  }
 
   return (
     <div className={styles.container}>
+   
       <div className={styles.todos}>
           {todos.map(todoProps =>(
             <>

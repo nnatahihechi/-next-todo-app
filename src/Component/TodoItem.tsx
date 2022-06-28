@@ -11,7 +11,7 @@ import axios from 'axios';
 
 
 const TodoItem = (props: TodoContent) => {
-  const { description, title, isComplete, todoId} = props;
+  const {description, title, isComplete, todoId} = props;
   const [newDescription, setnewDescription] = useState(description);
   const [newTitle, setnewTitle] = useState(title);
   const [edit, setEdit] = useState(false);
@@ -66,8 +66,7 @@ const TodoItem = (props: TodoContent) => {
       })
    .catch(err => { console.error(err) })
 
-  //  setTitleValue("");
-  //   setDescriptionValue("");
+
  
   }
 

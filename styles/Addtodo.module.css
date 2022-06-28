@@ -19,10 +19,13 @@ margin-right:20px;
     height: 2rem;
     background-color:orange;
     color: aliceblue;
-
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 .input{
-   height: 2rem;
+height: 2rem;
 border:none;
 margin-right:1rem;
+border-radius: 2px;
 }
