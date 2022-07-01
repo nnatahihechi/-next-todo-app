@@ -31,14 +31,4 @@ const TodoList = () => {
   )
 }
 
-// export async function getServerSideProps() {
-//   // get todo data from API
-//   const res = await fetch(process.env.`API_URL/TodoItem`as string)
-//   const todos = await res.json()
-
-//   // return props
-//   return {
-//     props: { TodoList },
-//   }
-// }
 export default TodoList
