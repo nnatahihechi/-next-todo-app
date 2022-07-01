@@ -8,7 +8,7 @@ import style from "../../styles/Addtodo.module.css";
 
 import axios from 'axios';
 
-const {BASE_URL} = process.env
+const {NEXT_PUBLIC_BASE_URL} = process.env
 
 
 const TodoItem = (props: TodoContent) => {
@@ -33,7 +33,7 @@ const TodoItem = (props: TodoContent) => {
     const payload = { isComplete: !isCompleted };
     setIsCompleted(!isCompleted);
 
-    axios.put(`${BASE_URL}/api/TodoItem/${todoId}`, payload)
+    axios.put(`${NEXT_PUBLIC_BASE_URL}/api/TodoItem/${todoId}`, payload)
       // .then(response => console.log(response))
       .catch(err => console.error(err));
   }
@@ -41,7 +41,7 @@ const TodoItem = (props: TodoContent) => {
   //handle delete todos
   const removeTodo = () => {
     setTodos(todos => todos.filter(todos => todos.todoId !== todoId));
-    axios.delete(`${BASE_URL}/api/TodoItem/${todoId}`)
+    axios.delete(`${NEXT_PUBLIC_BASE_URL}/api/TodoItem/${todoId}`)
     .then(response => { console.log("response", response) })
 
   }
@@ -57,7 +57,7 @@ const TodoItem = (props: TodoContent) => {
       isComplete: isCompleted
     }
 
-    await axios.put(`${BASE_URL}/api/TodoItem/${todoId}`, payload)
+    await axios.put(`${NEXT_PUBLIC_BASE_URL}/api/TodoItem/${todoId}`, payload)
       .then(response => {
         if (response.status === 200) {
               setnewDescription(descriptionValue)

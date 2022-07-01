@@ -1,18 +1,26 @@
 import styles from "../../styles/TodoList.module.css";
 import { SpinnerCircular } from 'spinners-react';
-
+import { useState } from "react";
 import {useRecoilValue} from 'recoil'
 import { todoContentState } from '../state/todoState'
 import TodoItem from './TodoItem'
-interface todolistProps {
-  // todos: Array<Todo>
-}
+
 const TodoList = () => {
-  // const { todolist } = props
+
+  const [isLoading, setIsLoading] = useState(true);
+  setTimeout(() => {
+    setIsLoading(false);
+  }, 6000);
     
   const todos = useRecoilValue(todoContentState);
   if (!todos.length){
-    return <SpinnerCircular className={styles.spinner}   />
+    return (
+      <>
+    <SpinnerCircular className={styles.spinner} enabled={isLoading}  />
+    {isLoading? <p>Searching for todos</p> : <p>No todos found</p>}
+    </>
+    )
+
   }
 
   return (

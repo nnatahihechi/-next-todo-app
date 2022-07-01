@@ -15,9 +15,7 @@ import { todoContentState } from '../../src/state/todoState';
 import TodoContent from "../../src/types";
 import { useRouter } from 'next/router';
 
-const {BASE_URL} = process.env
-
-
+const { NEXT_PUBLIC_BASE_URL } = process.env
 
 
 const AddTodo = () => {
@@ -35,8 +33,7 @@ const AddTodo = () => {
   const setTodos = useSetRecoilState(todoContentState);
 
   useEffect(() => {
-    // console.log(content, "content");
-    axios.get(`${BASE_URL}/api/TodoItem/`)
+    axios.get(`${NEXT_PUBLIC_BASE_URL}/api/TodoItem/`)
       .then(response => {
         // console.log("ressddddd",response.data[0]._id)
         setTodos(response.data);
@@ -51,7 +48,7 @@ const AddTodo = () => {
     
     const payload = {todoId: content.todoId, title: content.title, description: content.description, isComplete: false };
     
-    axios.post(`${BASE_URL}/api/AddTodo`, payload)
+    axios.post(`${NEXT_PUBLIC_BASE_URL}/api/AddTodo`, payload)
       .then(response => {
         console.log("response ---", response);
       })

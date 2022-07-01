@@ -2,8 +2,8 @@
 import mongoose, { Model } from "mongoose"
 
 // CONNECTING TO MONGOOSE
-const { USER_NAME, PASSWORD, CLUSTER, DBNAME } = process.env
-const DATABASE_URL =`mongodb+srv://${USER_NAME}:${PASSWORD}@${CLUSTER}.pcfeg1y.mongodb.net/${DBNAME}?retryWrites=true&w=majority`;
+const { NEXT_PUBLIC_USER_NAME, NEXT_PUBLIC_PASSWORD, NEXT_PUBLIC_CLUSTER, NEXT_PUBLIC_DBNAME } = process.env
+const DATABASE_URL =`mongodb+srv://${NEXT_PUBLIC_USER_NAME}:${NEXT_PUBLIC_PASSWORD}@${NEXT_PUBLIC_CLUSTER}.pcfeg1y.mongodb.net/${NEXT_PUBLIC_DBNAME}?retryWrites=true&w=majority`;
 
 // connection function
 const connect = async () => {
