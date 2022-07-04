@@ -21,7 +21,7 @@ const { NEXT_PUBLIC_BASE_URL } = process.env
 const AddTodo = () => {
   // const router = useRouter()
 
-  const [content, setContent] = useState<Omit<TodoContent, "id">>({ todoId: "", description: "", title: "", isComplete: false});
+  const [content, setContent] = useState<Omit<TodoContent, "id">>({ todoId: "", description: "", title: "", isComplete: false });
 
 
   {/* //handle input  */ }
@@ -35,6 +35,7 @@ const AddTodo = () => {
   useEffect(() => {
     axios.get(`${NEXT_PUBLIC_BASE_URL}/api/TodoItem/`)
       .then(response => {
+        console.log("GET called")
         // console.log("ressddddd",response.data[0]._id)
         setTodos(response.data);
       })
@@ -45,11 +46,12 @@ const AddTodo = () => {
     e.preventDefault();
 
     content.todoId = nanoid();
-    
-    const payload = {todoId: content.todoId, title: content.title, description: content.description, isComplete: false };
-    
+
+    const payload = { todoId: content.todoId, title: content.title, description: content.description, isComplete: false };
+
     axios.post(`${NEXT_PUBLIC_BASE_URL}/api/AddTodo`, payload)
       .then(response => {
+        console.log("POST called")
         console.log("response ---", response);
       })
       .catch(err => {
@@ -65,9 +67,9 @@ const AddTodo = () => {
 
     setContent({ todoId: "", description: "", title: "", isComplete: false });
   }
-  
 
-  
+
+
 
   return (
     <div className={styles.container}>
@@ -83,15 +85,15 @@ const AddTodo = () => {
           // defaultValue="Reset"
           className={styles.input} />
 
-        <input 
-        onChange={handleChange}
-        type="textarea" 
+        <input
+          onChange={handleChange}
+          type="textarea"
           value={content.description}
           placeholder="Description"
           id="description"
           className={styles.input}
-          // defaultValue="Reset"
-           />
+        // defaultValue="Reset"
+        />
 
         <button type="submit"
           disabled={!content.title}
@@ -100,7 +102,7 @@ const AddTodo = () => {
         </button>
 
       </form>
-      
+
     </div>
   )
 }
