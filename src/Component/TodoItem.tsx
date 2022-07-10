@@ -24,7 +24,7 @@ const TodoItem = (props: TodoContent) => {
   const [isCompleted, setIsCompleted] = useState(isComplete);
     // useRecoilState(todoCompleteState(props.todoId));
   const setTodos = useSetRecoilState(todoContentState);
-
+  NEXT_PUBLIC_BASE_URhttps://next-todo-app-nine.vercel.app/
   
 
 
@@ -33,7 +33,7 @@ const TodoItem = (props: TodoContent) => {
     const payload = { isComplete: !isCompleted };
     setIsCompleted(!isCompleted);
 
-    axios.put(`${NEXT_PUBLIC_BASE_URL}/api/TodoItem/${todoId}`, payload)
+    axios.put(`https://next-todo-app-nine.vercel.app/api/TodoItem/${todoId}`, payload)
       // .then(response => console.log(response))
       .catch(err => console.error(err));
   }
@@ -41,7 +41,7 @@ const TodoItem = (props: TodoContent) => {
   //handle delete todos
   const removeTodo = () => {
     setTodos(todos => todos.filter(todos => todos.todoId !== todoId));
-    axios.delete(`${NEXT_PUBLIC_BASE_URL}/api/TodoItem/${todoId}`)
+    axios.delete(`https://next-todo-app-nine.vercel.app/api/TodoItem/${todoId}`)
     .then(response => { console.log("response", response) })
 
   }
@@ -57,7 +57,7 @@ const TodoItem = (props: TodoContent) => {
       isComplete: isCompleted
     }
 
-    await axios.put(`${NEXT_PUBLIC_BASE_URL}/api/TodoItem/${todoId}`, payload)
+    await axios.put(`https://next-todo-app-nine.vercel.app/api/TodoItem/${todoId}`, payload)
       .then(response => {
         if (response.status === 200) {
               setnewDescription(descriptionValue)

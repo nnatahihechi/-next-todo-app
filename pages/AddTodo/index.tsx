@@ -15,7 +15,7 @@ import { todoContentState } from '../../src/state/todoState';
 import TodoContent from "../../src/types";
 import { useRouter } from 'next/router';
 
-const { NEXT_PUBLIC_BASE_URL } = process.env
+// const { NEXT_PUBLIC_BASE_URL } = process.env
 
 
 const AddTodo = () => {
@@ -33,10 +33,9 @@ const AddTodo = () => {
   const setTodos = useSetRecoilState(todoContentState);
 
   useEffect(() => {
-    axios.get(`${NEXT_PUBLIC_BASE_URL}/api/TodoItem/`)
+    axios.get(`https://next-todo-app-nine.vercel.app/api/TodoItem/`)
       .then(response => {
         console.log("GET called")
-        // console.log("ressddddd",response.data[0]._id)
         setTodos(response.data);
       })
   }, []);
@@ -49,7 +48,7 @@ const AddTodo = () => {
 
     const payload = { todoId: content.todoId, title: content.title, description: content.description, isComplete: false };
 
-    axios.post(`${NEXT_PUBLIC_BASE_URL}/api/AddTodo`, payload)
+    axios.post(`https://next-todo-app-nine.vercel.app//api/AddTodo`, payload)
       .then(response => {
         console.log("POST called")
         console.log("response ---", response);
@@ -82,7 +81,6 @@ const AddTodo = () => {
           value={content.title}
           placeholder="todo"
           id="title" required
-          // defaultValue="Reset"
           className={styles.input} />
 
         <input
@@ -92,7 +90,6 @@ const AddTodo = () => {
           placeholder="Description"
           id="description"
           className={styles.input}
-        // defaultValue="Reset"
         />
 
         <button type="submit"
