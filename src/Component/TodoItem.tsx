@@ -8,7 +8,7 @@ import style from "../../styles/Addtodo.module.css";
 
 import axios from 'axios';
 
-const {NEXT_PUBLIC_BASE_URL} = process.env
+// const {NEXT_PUBLIC_BASE_URL} = process.env
 
 
 const TodoItem = (props: TodoContent) => {
@@ -24,7 +24,7 @@ const TodoItem = (props: TodoContent) => {
   const [isCompleted, setIsCompleted] = useState(isComplete);
     // useRecoilState(todoCompleteState(props.todoId));
   const setTodos = useSetRecoilState(todoContentState);
-  NEXT_PUBLIC_BASE_URhttps://next-todo-app-nine.vercel.app/
+//  https://next-todo-app-nine.vercel.app/
   
 
 
@@ -94,7 +94,6 @@ const TodoItem = (props: TodoContent) => {
          
         <input
           value={descriptionValue}
-          // type="textarea"
           onChange={(e) => { setDescriptionValue(e.target.value) }}
           placeholder="Description"
           id="description"

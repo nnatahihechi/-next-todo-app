@@ -17,19 +17,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     }
   }
 
-  // if (method === 'DELETE') {
-  //   const todo = new Todo(req.body)
-  //   console.log(todo);
-  //   console.log("req.body", req.body)
-  //   // const todos = await todo.findByIdAndRemove(todo.id)
-  //   const todos = await Todo.deleteOne({ todoId: todo.todoId }, function (err: any) {
-  //     if (err) console.log(err);
-  //     console.log("Successful deletion");
-  //   });
-
-  //   res.status(201).json(todos)
-
-  // }
 }
 
 
