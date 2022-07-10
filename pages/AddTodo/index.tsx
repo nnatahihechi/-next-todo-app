@@ -48,7 +48,7 @@ const AddTodo = () => {
 
     const payload = { todoId: content.todoId, title: content.title, description: content.description, isComplete: false };
 
-    axios.post(`https://next-todo-app-nine.vercel.app/api/AddTodo`, payload)
+    axios.post("https://next-todo-app-nnatahihechi.vercel.app/", payload)
       .then(response => {
         console.log("POST called")
         console.log("response ---", response);
