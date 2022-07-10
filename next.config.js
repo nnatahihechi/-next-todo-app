@@ -4,7 +4,7 @@ module.exports = {
         return [
           {
             source: `/api/AddTodo`,
-            destination: "https://next-todo-app-nnatahihechi.vercel.app/",
+            destination: "https://next-todo-app-nnatahihechi.vercel.app/AddTodo",
           },
         ]
       },
