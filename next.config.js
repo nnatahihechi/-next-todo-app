@@ -3,8 +3,8 @@ module.exports = {
     async rewrites() {
         return [
           {
-            source: `/pages/api/AddTodo`,
-            destination: "https://next-todo-app-vert.vercel.app/pages/api/AddTodo",
+            source: `/api/AddTodo`,
+            destination: "https://next-todo-app-vert.vercel.app/api/AddTodo",
           },
         ]
       },
