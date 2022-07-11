@@ -29,7 +29,8 @@ const TodoList = () => {
       <div className={styles.todos}>
           {todos.map(todoProps =>(
             <>
-              <TodoItem {...todoProps} key={todoProps.todoId}/>
+              <TodoItem {...todoProps} key={todoProps.todoId}
+              />
             </>
             
           ))}

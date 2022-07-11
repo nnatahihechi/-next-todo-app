@@ -82,15 +82,11 @@ const TodoItem = (props: TodoContent) => {
         onSubmit={editTodo}>
  
         <input
-      
           value={titleValue}
           onChange={(e) => { setTitleValue(e.target.value) }}
           placeholder="todo"
           id="title" required
           className={style.input} />
-         
-
-         
         <input
           value={descriptionValue}
           onChange={(e) => { setDescriptionValue(e.target.value) }}
@@ -98,7 +94,7 @@ const TodoItem = (props: TodoContent) => {
           id="description"
           className={style.input} />
         
-
+<div className={style.button}>
         <button type="submit"
           className={style.button}>
           Update
@@ -112,7 +108,7 @@ const TodoItem = (props: TodoContent) => {
           }}>
           Cancel
         </button>
-
+        </div>
       </form>
       </>
     );

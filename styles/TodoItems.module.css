@@ -2,6 +2,19 @@
   padding: 0;
 }
 
+.form {
+  display: flex;
+  flex: 1;
+  margin-bottom: 100px;
+flex-direction: column;
+
+}
+.form:third-child {
+display: flex;
+flex-direction: column;
+flex: 1;  
+}
+
 .button {
   margin-right: 20px;
   margin-bottom: 10px;
@@ -13,6 +26,7 @@
   color: rgb(255, 98, 0);
   border-radius: 5px;
 }
+
 
 @media (min-width: 280px) and (max-width: 480px) {
  .container {
@@ -33,6 +47,6 @@
     border-radius: 5px;
    margin-bottom: 10px;
   }
-  
-      
+
+
 }
