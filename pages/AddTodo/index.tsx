@@ -36,6 +36,7 @@ const AddTodo = () => {
     axios.get(`https://next-todo-app-nine.vercel.app/api/TodoItem/`)
       .then(response => {
         console.log("GET called")
+        console.log("RESPONSE", response)
         setTodos(response.data);
       })
   }, []);
