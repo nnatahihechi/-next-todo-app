@@ -34,10 +34,9 @@ const TodoItem = (props: TodoContent) => {
     setIsCompleted(!isCompleted);
 
     axios.put(`/api/TodoItem/${todoId}`, payload)
-      // .then(response => console.log(response))
       .catch(err => console.error(err));
   }
-  `/api/AddTodo`
+  
   //handle delete todos
   const removeTodo = () => {
     setTodos(todos => todos.filter(todos => todos.todoId !== todoId));
@@ -57,7 +56,7 @@ const TodoItem = (props: TodoContent) => {
       isComplete: isCompleted
     }
 
-    await axios.put(`/ap/TodoItem/${todoId}`, payload)
+    await axios.put(`/api/TodoItem/${todoId}`, payload)
       .then(response => {
         if (response.status === 200) {
               setnewDescription(descriptionValue)
