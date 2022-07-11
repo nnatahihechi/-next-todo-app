@@ -33,7 +33,7 @@ const AddTodo = () => {
   const setTodos = useSetRecoilState(todoContentState);
 
   useEffect(() => {
-    axios.get(`https://next-todo-app-nine.vercel.app/api/TodoItem/`)
+    axios.get(`/api/TodoItem/`)
       .then(response => {
         console.log("GET called")
         console.log("RESPONSE", response)
