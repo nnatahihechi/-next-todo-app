@@ -33,15 +33,15 @@ const TodoItem = (props: TodoContent) => {
     const payload = { isComplete: !isCompleted };
     setIsCompleted(!isCompleted);
 
-    axios.put(`https://next-todo-app-nine.vercel.app/api/TodoItem/${todoId}`, payload)
+    axios.put(`/api/TodoItem/${todoId}`, payload)
       // .then(response => console.log(response))
       .catch(err => console.error(err));
   }
-  `https://next-todo-app-nine.vercel.app/api/AddTodo`
+  `/api/AddTodo`
   //handle delete todos
   const removeTodo = () => {
     setTodos(todos => todos.filter(todos => todos.todoId !== todoId));
-    axios.delete(`https://next-todo-app-nine.vercel.app/api/TodoItem/${todoId}`)
+    axios.delete(`/api/TodoItem/${todoId}`)
     .then(response => { console.log("response", response) })
 
   }
@@ -57,7 +57,7 @@ const TodoItem = (props: TodoContent) => {
       isComplete: isCompleted
     }
 
-    await axios.put(`https://next-todo-app-nine.vercel.app/TodoItem/${todoId}`, payload)
+    await axios.put(`/ap/TodoItem/${todoId}`, payload)
       .then(response => {
         if (response.status === 200) {
               setnewDescription(descriptionValue)
