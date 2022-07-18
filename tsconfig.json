@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/api/user.ts", "utils/connectDb.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/api/user.ts", "utils/connectDb.ts", "src/content/userContext.tsx"],
   "exclude": ["node_modules"]
 }

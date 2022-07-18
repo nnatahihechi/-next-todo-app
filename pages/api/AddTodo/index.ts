@@ -5,10 +5,7 @@ import Todo from "../../../models/todos";
 import { useRouter } from "next/router";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  // Define props
-
-
-  // const router = useRouter()
+ 
   const { method } = req;
 
   await connectDb();

@@ -1,0 +1,58 @@
+.container {
+        height: 100vh;
+        max-height: 100%;
+        background:rgba(255, 255, 255, 0.2);
+        width: 17vw;
+        color: rgb(112, 112, 247);
+        overflow-y: auto;
+        overflow-y: auto;
+        overflow-x: hidden;
+        /* margin-left: -1rem; */
+        /* margin-right: auto; */
+        user-select: none;
+        z-index: 999;
+
+      }
+
+.sideBarlist {
+    width: 100%;
+    height: auto;
+    padding: 0;
+
+}
+
+
+.sideBarlist .row {
+    width: 100%;
+    height: 40px;
+    list-style-type: none;
+    margin: 0;
+    display: flex;
+    color: black;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.sideBarlist .row:hover {
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.sideBarlist .row #active {
+    background-color: rgb(173, 122, 220)
+}
+
+.row .icon {
+    flex: 30%;
+    display: grid;
+    place-items: center;
+
+}
+
+.row .title {
+    flex: 70%;
+
+}
+
+/* note */

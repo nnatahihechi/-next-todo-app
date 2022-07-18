@@ -13,17 +13,10 @@ import { nanoid } from "nanoid";
 import { useSetRecoilState } from "recoil";
 import { todoContentState } from '../../src/state/todoState';
 import TodoContent from "../../src/types";
-import { useRouter } from 'next/router';
-
-// const { NEXT_PUBLIC_BASE_URL } = process.env
-
 
 const AddTodo = () => {
-  // const router = useRouter()
 
   const [content, setContent] = useState<Omit<TodoContent, "id">>({ todoId: "", description: "", title: "", isComplete: false });
-
-
   {/* //handle input  */ }
   const handleChange: ChangeEventHandler<HTMLInputElement> = e =>
     setContent(prev => ({
@@ -40,7 +33,6 @@ const AddTodo = () => {
         setTodos(response.data);
       })
   }, []);
-
 
   const addTodo: FormEventHandler<HTMLFormElement> = async e => {
     e.preventDefault();
@@ -67,9 +59,6 @@ const AddTodo = () => {
 
     setContent({ todoId: "", description: "", title: "", isComplete: false });
   }
-
-
-
 
   return (
     <div className={styles.container}>
@@ -98,11 +87,8 @@ const AddTodo = () => {
           className={styles.button}>
           Add Todo
         </button>
-
       </form>
-
     </div>
   )
 }
-
 export default AddTodo;

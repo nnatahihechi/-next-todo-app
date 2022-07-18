@@ -26,8 +26,6 @@ const TodoItem = (props: TodoContent) => {
   const setTodos = useSetRecoilState(todoContentState);
 //  https://next-todo-app-nine.vercel.app/
   
-
-
   //handle the complete status 
   const completedTodos = () => {
     const payload = { isComplete: !isCompleted };
