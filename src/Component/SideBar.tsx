@@ -5,9 +5,14 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import styles from '../../styles/sideBar.module.css';
 import { SideBarData } from '../Component/SideBarData'
+import CloseIcon from '@material-ui/icons/Close';
+import App from '../../pages/_app'
+import { GoogleLogin, googleLogout } from '@react-oauth/google';
+
 
 
 const SideBar = () => {
+    const [user, setUser] = useState(true)
     const currentRoute = useRouter()
 
     const isPath = (link: string) => {
@@ -42,6 +47,19 @@ const SideBar = () => {
                         )
                     })}
                 </ul>
+                {!user && (
+                    <>
+                    <div>Login in to add a task </div>
+                    <div> 
+                        {/* <GoogleLogin
+                       clientId=""
+                        onSuccess={() => {}}
+                        onError={()=> {}}
+                        /> */}
+                    
+                    </div>
+                    </>
+                    )}
             </div>
 
 

@@ -1,43 +1,99 @@
-import { createContext, ReactNode, useContext } from "react";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useState,
+  useEffect,
+} from "react";
+import jwt_decode from "jwt-decode";
+import axios from "axios";
+
+type Profile = {
+  name: string;
+  picture: string;
+  sub: string;
+};
 
 // Create context type
 type userContextType = {
-    user : null,
-    login : {},
-    logout :{},
+  user: Profile;
+  login: {};
+  logout: {};
+  createorGetUser?: (response: any) => Promise<void>;
 };
 // Create context default values
 export const userContextDefaultValues: userContextType = {
-    user : null,
-    login : {},
-    logout :{},
-}
+  user: { name: "", picture: "", sub: "" },
+  login: {},
+  logout: {},
+};
 
 // createContext & useContext
-const UserContext = createContext<userContextType>(userContextDefaultValues)
+const UserContext = createContext<userContextType>(userContextDefaultValues);
 
-//call useContext and pass the content that has been created to it 
+//call useContext and pass the content that has been created to it
 export function useUserContext() {
-    return useContext(UserContext);
+  return useContext(UserContext);
 }
 
 // Create a provider function
 type Props = {
-    children: ReactNode
+  children: ReactNode;
 };
 
 export function UserAuthProvider({ children }: Props) {
-    const value = {
-     user : null,
-       login : {},
-       logout :{},
-      
+  const [userProfile, setUserProfile] = useState({
+    user: userContextDefaultValues.user,
+  });
+  const value = {
+    ...userProfile,
+    login: {},
+    logout: {},
+  };
+  const createorGetUser = async (response: any) => {
+    const { credential } = response;
+
+    const decoded: {
+      name: string;
+      email: string;
+      picture: string;
+      sub: string;
+    } = jwt_decode(credential);
+
+    localStorage.setItem("token", credential);
+
+    // destructure
+    const { name, picture, sub } = decoded;
+    setUserProfile({ user: { name, picture, sub } });
+
+    const user = {
+      _id: sub,
+      _type: "user",
+      username: name,
+      image: picture,
+    };
+    await axios.post(`http://localhost:3000/api/auth`, user);
+  };
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      const decoded: {
+        name: string;
+        email: string;
+        picture: string;
+        sub: string;
+      } = jwt_decode(token);
+
+      const { name, picture, sub } = decoded;
+      setUserProfile({ user: { name, picture, sub } });
     }
-    return (
-        <>
-            <UserContext.Provider value={value}>
-                {children}
-            </UserContext.Provider>
-        </>
-    )
+  }, []);
+  return (
+    <>
+      <UserContext.Provider value={{ ...value, createorGetUser }}>
+        {children}
+      </UserContext.Provider>
+    </>
+  );
 }

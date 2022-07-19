@@ -1,70 +1,47 @@
-import { GoogleLogin, googleLogout } from '@react-oauth/google';
-import jwt_decode from 'jwt-decode';
-import React from 'react'
-import { useState, useEffect } from 'react';
-import styles from '../../styles/signin.module.css'
-import createorGetUser from '../../utils';
+import { GoogleLogin, googleLogout } from "@react-oauth/google";
+import jwt_decode from "jwt-decode";
+import React from "react";
+import { useState, useEffect } from "react";
+import styles from "../../styles/signin.module.css";
+// import createorGetUser from "../../utils";
+import { useUserContext } from "../../src/content/userContext";
 
-const login = () => {
-  const [user, setUser] = useState({
+const Login = () => {
+  const { user, createorGetUser } = useUserContext();
+  console.log(user, createorGetUser);
+  const [login, setLogin] = useState({
     loggedin: false,
-    name: "",
-    email: "",
-    picture: "",
-    sub: ""
   });
 
   useEffect(() => {
     const token = localStorage.getItem("token");
 
     if (token) {
-      const decoded: {
-        name: string,
-        email: string,
-        picture: string,
-        sub: string
-      } = jwt_decode(token)
-
-      setUser({
+      setLogin({
         loggedin: true,
-        ...decoded
-      })
+      });
     }
   }, []);
 
   return (
     <div className={styles.container}>
-      {user.loggedin ? (
+      {login.loggedin ? (
         <div className={styles.userContainer}>
           <div className={styles.userdetail}>
-            <img src={user.picture}
-              width={62}
-              height={62}
-              className="round-full"
-              alt="profil picture"
-              border-radius={50}
-              // layout="responsive"
-            />
           </div>
-          <div className={styles.userdetail}> {user.name} </div>
-
-        <button>log out</button>
-
         </div>
-
       ) : (
         <GoogleLogin
           onSuccess={(response) => {
-            createorGetUser(response)
+            createorGetUser!(response);
           }}
-          onError={() => { console.log("error") }}
+          onError={() => {
+            console.log("error");
+          }}
         />
-      )
-      }
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default login
-
-
+export default Login;
