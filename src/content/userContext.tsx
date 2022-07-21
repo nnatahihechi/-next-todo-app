@@ -7,6 +7,7 @@ import {
 } from "react";
 import jwt_decode from "jwt-decode";
 import axios from "axios";
+import { decode } from "punycode";
 
 type Profile = {
   name: string;
@@ -59,8 +60,11 @@ export function UserAuthProvider({ children }: Props) {
       picture: string;
       sub: string;
     } = jwt_decode(credential);
+    console.log("dddd", decoded.sub);  
 
     localStorage.setItem("token", credential);
+    localStorage.setItem("email", decoded.email);
+     localStorage.setItem("sub", decoded.sub);
 
     // destructure
     const { name, picture, sub } = decoded;

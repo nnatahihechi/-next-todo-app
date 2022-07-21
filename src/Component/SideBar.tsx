@@ -12,7 +12,7 @@ import { GoogleLogin, googleLogout } from '@react-oauth/google';
 
 
 const SideBar = () => {
-    const [user, setUser] = useState(true)
+    const [user, setUser] = useState(false)
     const currentRoute = useRouter()
 
     const isPath = (link: string) => {
@@ -51,11 +51,7 @@ const SideBar = () => {
                     <>
                     <div>Login in to add a task </div>
                     <div> 
-                        {/* <GoogleLogin
-                       clientId=""
-                        onSuccess={() => {}}
-                        onError={()=> {}}
-                        /> */}
+                        
                     
                     </div>
                     </>

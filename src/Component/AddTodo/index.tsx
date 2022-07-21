@@ -1,4 +1,4 @@
-import styles from "../../styles/Addtodo.module.css";
+import styles from "../../../styles/Addtodo.module.css";
 import axios from "axios";
 
 import {
@@ -7,13 +7,13 @@ import {
   useState,
   useEffect,
 } from "react";
-import Todo from "../../models/todos";
+import Todo from "../../../models/todos";
 
 import { nanoid } from "nanoid";
 import { useSetRecoilState } from "recoil";
-import { todoContentState } from "../../src/state/todoState";
-import TodoContent from "../../src/types";
-import { useUserContext } from "../../src/content/userContext";
+import { todoContentState } from "../../../src/state/todoState";
+import TodoContent from "../../../src/types";
+import { useUserContext } from "../../../src/content/userContext";
 
 const AddTodo = () => {
   const { user, createorGetUser } = useUserContext();
@@ -23,6 +23,8 @@ const AddTodo = () => {
     description: "",
     title: "",
     isComplete: false,
+    userId: "",
+    important: false,
   });
   {
     /* //handle input  */
@@ -36,9 +38,10 @@ const AddTodo = () => {
   const setTodos = useSetRecoilState(todoContentState);
 
   useEffect(() => {
-    axios.get(`/api/TodoItem/`).then((response) => {
-      console.log("GET called");
-      console.log("RESPONSE", response);
+    axios.get(`/api/TodoItem/`, {
+      params: {userId: localStorage.getItem("sub")},
+    }).then((response) => {
+      // console.log("RESPONSE", response);
       setTodos(response.data);
     });
   }, []);
@@ -53,6 +56,8 @@ const AddTodo = () => {
       title: content.title,
       description: content.description,
       isComplete: false,
+      userId: localStorage.getItem("sub"),
+      important: false,
     };
 
     axios
@@ -72,7 +77,7 @@ const AddTodo = () => {
       return newCurrent;
     });
 
-    setContent({ todoId: "", description: "", title: "", isComplete: false });
+    setContent({ todoId: "", description: "", title: "", isComplete: false, userId: "", important: false });
   };
 
   return (

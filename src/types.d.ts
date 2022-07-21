@@ -3,6 +3,8 @@ export interface TodoContent{
     title: string;
     description: string;
     isComplete:Boolean
+    userId:string
+    important:Boolean
 }
 
 

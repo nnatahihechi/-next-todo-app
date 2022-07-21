@@ -30,7 +30,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       title: req.body.title,
       description: req.body.description,
       todoId: req.body.todoId,
-      isComplete: req.body.isComplete
+      isComplete: req.body.isComplete,
+      important: req.body.important
     }
     
     console.log("playload...", payload);

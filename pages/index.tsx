@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-import AddTodo from './AddTodo'
+import AddTodo from '../src/Component/AddTodo'
 import Login from './login'
 import TodoList from '../src/Component/TodoList'
 import SideBar from '../src/Component/SideBar'
@@ -25,7 +25,6 @@ const Home = () => {
       <AddTodo />
       <TodoList />  
     </div>
-      <Login/>
     </div>
   )
 }
