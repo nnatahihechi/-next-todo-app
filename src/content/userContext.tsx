@@ -21,6 +21,7 @@ type userContextType = {
   login: {};
   logout: {};
   createorGetUser?: (response: any) => Promise<void>;
+  removeUser?:any
 };
 // Create context default values
 export const userContextDefaultValues: userContextType = {
@@ -60,11 +61,10 @@ export function UserAuthProvider({ children }: Props) {
       picture: string;
       sub: string;
     } = jwt_decode(credential);
-    console.log("dddd", decoded.sub);  
 
     localStorage.setItem("token", credential);
     localStorage.setItem("email", decoded.email);
-     localStorage.setItem("sub", decoded.sub);
+    localStorage.setItem("sub", decoded.sub);
 
     // destructure
     const { name, picture, sub } = decoded;
@@ -78,7 +78,7 @@ export function UserAuthProvider({ children }: Props) {
     };
     await axios.post(`http://localhost:3000/api/auth`, user);
   };
-
+  
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -93,9 +93,17 @@ export function UserAuthProvider({ children }: Props) {
       setUserProfile({ user: { name, picture, sub } });
     }
   }, []);
+
+ function removeUser() {
+   localStorage.removeItem("token");
+   localStorage.removeItem("email");
+   localStorage.removeItem("sub");
+   setUserProfile({ user: userContextDefaultValues.user });
+ }
+
   return (
     <>
-      <UserContext.Provider value={{ ...value, createorGetUser }}>
+      <UserContext.Provider value={{ ...value, createorGetUser, removeUser}}>
         {children}
       </UserContext.Provider>
     </>

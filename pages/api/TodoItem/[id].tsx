@@ -20,9 +20,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     await Todo.deleteOne({ todoId: id });
   }
 
-  // if (method === 'PUT') {
-  //   await Todo.updateOne({ todoId: id }, { $set: { isComplete: req.body.isComplete } });
-  // }
+  if (method === 'PUT') {
+    await Todo.updateOne({ todoId: id }, { $set: { isComplete: req.body.isComplete } });
+  }
 
 
   if (method === 'PUT') {

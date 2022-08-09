@@ -6,7 +6,7 @@ import AssignmentIcon from '@material-ui/icons/Assignment';
 type SideBarLink = {
     title: string
     icon: any
-    link: string
+    link?: string
   }
 export const SideBarData:SideBarLink[] = [
     {
@@ -17,7 +17,8 @@ export const SideBarData:SideBarLink[] = [
     {
         title: 'Important',
         icon: <StarBorderIcon />,
-        link: '/pages/AddTodo'
+        // link: '/pages/AddTodo',
+
     }, 
 
     {

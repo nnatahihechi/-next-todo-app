@@ -1,18 +1,25 @@
 .container {
-        height: 100vh;
+        height: 550px;
         max-height: 100%;
         background:rgba(255, 255, 255, 0.2);
         width: 17vw;
-        color: rgb(112, 112, 247);
+        color: black;
         overflow-y: auto;
         overflow-y: auto;
         overflow-x: hidden;
-        /* margin-left: -1rem; */
-        /* margin-right: auto; */
+        border-radius: 20px;
         user-select: none;
         z-index: 999;
-
+        margin-right: 850px;
+        position:relative;
       }
+.container .planner{
+    background-color: #15326b;
+    display: flex;
+    justify-content: center;
+    color: rgb(242, 236, 236);
+}
+     
 
 .sideBarlist {
     width: 100%;
@@ -55,4 +62,13 @@
 
 }
 
-/* note */
+.logout {
+    margin-bottom: auto;
+    justify-content: center;
+    display: flex;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    padding-bottom: 15px;
+}
+

@@ -5,6 +5,11 @@ export const todoContentState = atom<TodoContent[]>({
     default: [],
 });
 
+export const todoDisplayTypeState = atom<string>({
+   key: "todoDisplayType",
+   default: "all",
+})
+
 //the key is a unique identifier 
 
 export const todoCompleteState = atomFamily<boolean, string>({

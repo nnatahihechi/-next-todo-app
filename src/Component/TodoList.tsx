@@ -2,8 +2,9 @@ import styles from "../../styles/TodoList.module.css";
 import { SpinnerCircular } from 'spinners-react';
 import { useState } from "react";
 import {useRecoilValue} from 'recoil'
-import { todoContentState } from '../state/todoState'
+import { todoContentState, todoDisplayTypeState } from '../state/todoState'
 import TodoItem from './TodoItem'
+import { filterList } from "../../utils/filterList";
 
 const TodoList = () => {
 
@@ -13,6 +14,7 @@ const TodoList = () => {
   }, 6000);
     
   const todos = useRecoilValue(todoContentState);
+  const todoType = useRecoilValue(todoDisplayTypeState);
   if (!todos.length){
     return (
       <>
@@ -23,11 +25,13 @@ const TodoList = () => {
 
   }
 
+  console.log("TODOS", todos, todoType);
+
   return (
     <div className={styles.container}>
    
       <div className={styles.todos}>
-          {todos.map(todoProps =>(
+          {filterList(todos, todoType).map(todoProps =>(
             <>
               <TodoItem {...todoProps} key={todoProps.todoId}
               />

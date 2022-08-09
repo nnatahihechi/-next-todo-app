@@ -14,6 +14,7 @@ import { useSetRecoilState } from "recoil";
 import { todoContentState } from "../../../src/state/todoState";
 import TodoContent from "../../../src/types";
 import { useUserContext } from "../../../src/content/userContext";
+import DashboardLayout from "../../../container /Dashboardlayout";
 
 const AddTodo = () => {
   const { user, createorGetUser } = useUserContext();
@@ -86,7 +87,7 @@ const AddTodo = () => {
       <img
         style={{ width: "100px", height: "100px", borderRadius: "50%" }}
         src={user.picture}
-        alt="my_picture"
+        alt=""
       />
       <form className={styles.form} onSubmit={addTodo}>
         <input
@@ -118,4 +119,7 @@ const AddTodo = () => {
     </div>
   );
 };
+
+
+
 export default AddTodo;
