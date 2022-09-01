@@ -4,12 +4,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 999;     
+  z-index: 999;
   height: 550px;
-  width: 1050px; 
-  border-radius: 25px ;
-  border: 2px solid white;
+  width: 1050px;
+  border-radius: 25px;
 }
+
 /* 
 .main {
   display: flex;
@@ -48,4 +48,3 @@
   user-select: none;
   z-index: 999;
 } */
-

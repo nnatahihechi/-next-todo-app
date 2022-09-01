@@ -14,7 +14,6 @@ import { useSetRecoilState } from "recoil";
 import { todoContentState } from "../../../src/state/todoState";
 import TodoContent from "../../../src/types";
 import { useUserContext } from "../../../src/content/userContext";
-import DashboardLayout from "../../../container /Dashboardlayout";
 
 const AddTodo = () => {
   const { user, createorGetUser } = useUserContext();
@@ -42,7 +41,6 @@ const AddTodo = () => {
     axios.get(`/api/TodoItem/`, {
       params: {userId: localStorage.getItem("sub")},
     }).then((response) => {
-      // console.log("RESPONSE", response);
       setTodos(response.data);
     });
   }, []);

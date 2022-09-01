@@ -8,7 +8,6 @@ import { useUserContext } from "../../src/content/userContext";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { todoDisplayTypeState } from "../../src/state/todoState";
 
-
 const SideBar = () => {
   //   const [user, setUser] = useState(true);
   const currentRoute = useRouter();
@@ -27,50 +26,52 @@ const SideBar = () => {
     <>
       <div className={styles.container}>
         <span className={styles.planner}>Day Planner</span>
-        <ul className={styles.sideBarlist}>
-          {SideBarData.map((val, key) => {
-            return (
-              <li
-                key={key}
-                className={styles.row}
-                // id={ window.location.pathname == val.link ? "active" : "" }
-                onClick={() => {
-                  val.link
-                    ? (window.location.pathname = val.link)
-                    : setTodoDisplayType(
-                        todoType == "all" ? "important" : "all"
-                      );
-                }}
+        <main className={styles.wrapper}>
+          <ul className={styles.sideBarlist}>
+            {SideBarData.map((val, key) => {
+              return (
+                <li
+                  key={key}
+                  className={styles.row}
+                  // id={ window.location.pathname == val.link ? "active" : "" }
+                  onClick={() => {
+                    val.link
+                      ? (window.location.pathname = val.link)
+                      : setTodoDisplayType(
+                          todoType == "all" ? "important" : "all"
+                        );
+                  }}
 
-                // className={isPath(SideBarData.link) ? styles?.active : ''}
-              >
-                <div className={styles.icon}>{val.icon}</div>
-                {""}
-                <div className={styles.title}>{val.title}</div>
-              </li>
-            );
-          })}
-        </ul>
-        {user && (
-          <div className={styles.logout}>
-            <button
-              type="button"
-              onClick={() => {
-                googleLogout();
-                removeUser();
-                router.push("/login");
-                setLogOut(false);
-              }}
-            >
-              Logout
-            </button>
+                  // className={isPath(SideBarData.link) ? styles?.active : ''}
+                >
+                  <div className={styles.icon}>{val.icon}</div>
+                  {""}
+                  <div className={styles.title}>{val.title}</div>
+                </li>
+              );
+            })}
+          </ul>
+          <div>
+            {user && (
+              <div className={styles.logout}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    googleLogout();
+                    removeUser();
+                    router.push("/login");
+                    setLogOut(false);
+                  }}
+                >
+                  Logout
+                </button>
+              </div>
+            )}
           </div>
-        )}
+        </main>
       </div>
     </>
   );
-
- 
 };
 
 export default SideBar;

@@ -1,0 +1,30 @@
+.container {
+    width: 200px;
+    height: 200px;
+    border: 2px solid rgb(188, 188, 246);
+    margin-right: 30px;
+    color: rgb(139, 149, 242);
+    background-color: #DFE8F5;
+    border-radius: 15px;
+    padding: 10px;
+    padding-top: 0px;
+    font-size: small;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+.container .text p{
+    margin-bottom: 0px;
+
+}
+.container span{
+     padding-top: 0px;
+    margin-top: 0px; 
+    font-size: 10px;
+    margin-top: 2px;
+}
+
+.container .icon{
+  margin-left: 60px;
+}
